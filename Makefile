@@ -2,7 +2,7 @@
 
 build: build_spin_tool_task build_spin_build_task build_deploy_to_fermyon_cloud_task build_spin_version_task build_spin_command_task
 	@echo "Building vsix package"
-	@tfx extension create --manifest-globs spin-extensions.json --output-path dist
+	@tfx extension create --manifest-globs fermyon-tasks.json --output-path dist
 
 build_spin_tool_task:
 	@echo "Building Spin tool task..."
