@@ -1,0 +1,24 @@
+{
+  "name": "spin-tool",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Thorsten Hans <thorsten.hans@gmail.com> (https://thorsten-hans.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^4.7.0",
+    "azure-pipelines-tool-lib": "^2.0.2",
+    "download": "^8.0.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.4",
+    "@types/node": "^20.9.0",
+    "@types/q": "^1.5.8",
+    "sync-request": "^6.1.0"
+  }
+}

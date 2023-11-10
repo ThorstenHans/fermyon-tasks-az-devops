@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "17e07652-c98f-4781-8f56-c7c550de979e",
+  "name": "spin-tool",
+  "friendlyName": "Spin Tool Installer",
+  "description": "Use this task to install Fermyon Spin",
+  "helpMarkDown": "For more information consult the [Fermyon Developer Home](https://developer.fermyon.com/)",
+  "category": "Utility",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Install Fermyon Spin",
+  "inputs": [
+    {
+      "name": "version",
+      "type": "string",
+      "label": "Desired version of Fermyon Spin",
+      "defaultValue": "latest",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "plugins",
+      "type": "boolean",
+      "label": "Install default plugins for Fermyon Spin",
+      "required": true,
+      "defaultValue": true,
+      "helpMarkDown": "By default, the following Spin plugins will be installed: js2wasm, py2wasm and cloud"
+    },
+    {
+      "name": "templates",
+      "type": "boolean",
+      "label": "Install default templates for Fermyon Spin",
+      "required": true,
+      "defaultValue": true,
+      "helpMarkDown": "Should application templates be installed or not? By default, this will install spin templates provided by Fermyon"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "index.js"
+    }
+  },
+  "messages": {
+    "ErrorFetchingLatestVersion": "Could not determine latest version of Fermyon Spin (%s). Got error: %s. Will use version %s (fallback)",
+    "SpinDownloadFailed": "Could not download version %s of Fermyon Spin from %s. Error: %s",
+    "SuccessfullyDownloaded": "Successfully downloaded version %s of Fermyon Spin to %s",
+    "VersionAlreadyInstalled": "Fermyon Spin %s is already installed at %s",
+    "VerifyingSpinInstallation": "Verifying installation of Fermyon Spin",
+    "InstallingSpinTemplates": "Installing Fermyon Spin templates from %s",
+    "InstallingSpinPlugins": "Installing Fermyon Spin plugin: %s",
+    "PrependingToPath": "Adding %s to PATH variable"
+  }
+}

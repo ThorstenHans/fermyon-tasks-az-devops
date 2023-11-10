@@ -1,0 +1,156 @@
+{
+  "manifestVersion": 1,
+  "id": "fermyon",
+  "name": "Spin & Fermyon Cloud tasks for Azure DevOps",
+  "version": "0.1.0",
+  "publisher": "thorstenhans",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tasks for installing Fermyon Spin, building Spin applications and deploying apps to Fermyon Cloud.",
+  "content": {
+    "details": {
+      "path": "DETAILS.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "assets/images/fermyon-icon.png"
+  },
+  "files": [
+    {
+      "path": "spin-tool"
+    },
+    {
+      "path": "deploy-to-fermyon-cloud"
+    },
+    {
+      "path": "spin-build"
+    },
+    {
+      "path": "spin-command"
+    },
+    {
+      "path": "spin-version"
+    },
+    {
+      "path": "assets/docs/fermyon-tasks.png",
+      "addressable": true
+    },
+    {
+      "path": "assets/docs/deploy-to-fermyon-cloud.png",
+      "addressable": true
+    },
+    {
+      "path": "assets/docs/spin-command-example.png",
+      "addressable": true
+    },
+    {
+      "path": "assets/docs/spin-tool-installer-version.png",
+      "addressable": true
+    },
+    {
+      "path": "assets/docs/spin-version-output.png",
+      "addressable": true
+    }
+  ],
+  "branding": {
+    "color": "rgb(14, 9, 45)",
+    "theme": "dark"
+  },
+  "contributions": [
+    {
+      "id": "spin-tool",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "spin-tool"
+      }
+    },
+    {
+      "id": "spin-build",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "spin-build"
+      }
+    },
+    {
+      "id": "spin-version",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "spin-version"
+      }
+    },
+    {
+      "id": "spin-command",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "spin-command"
+      }
+    },
+    {
+      "id": "deploy-to-fermyon-cloud",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "deploy-to-fermyon-cloud"
+      }
+    }
+  ],
+  "screenshots": [
+
+    {
+      "path": "assets/docs/deploy-to-fermyon-cloud.png"
+    },
+    {
+      "path": "assets/docs/fermyon-tasks.png"
+    },
+    {
+      "path": "assets/docs/spin-command-example.png"
+    },
+    {
+      "path": "assets/docs/spin-tool-installer-version.png"
+    },
+    {
+      "path": "assets/docs/spin-version-output.png"
+    }
+  ],
+  "links": {
+    "support": {
+      "uri": "https://github.com/ThorstenHans/fermyon-tasks-az-devops/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/ThorstenHans/fermyon-tasks-az-devops"
+  },
+  "tags": [
+    "spin",
+    "fermyon",
+    "cloud",
+    "webassembly",
+    "wasm",
+    "build"
+  ]
+}

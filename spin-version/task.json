@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "d00ac867-b4ea-4b42-a86e-91b4906dbdda",
+  "name": "spin-version",
+  "friendlyName": "Spin Version",
+  "description": "Invokes 'spin --version' to determine the actual version of Fermyon Spin. Detected version is stored in the 'version' variable.",
+  "helpMarkDown": "For more information consult the [Fermyon Developer Home](https://developer.fermyon.com/)",
+  "category": "Utility",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Spin Version",
+  "inputs": [],
+  "execution": {
+    "Node": {
+      "target": "index.js"
+    }
+  },
+
+  "outputVariables": [
+    {
+      "name": "version",
+      "description": "The version of Fermyon Spin that is installed on the agent."
+    }
+  ],
+  "messages": {
+    "VerifyingSpinInstallation": "Verifying installation of Fermyon Spin",
+    "RunningSpinVersion": "Invoking 'spin --version' to determine actual version of Fermyon Spin"
+  }
+}

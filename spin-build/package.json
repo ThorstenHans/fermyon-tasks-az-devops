@@ -1,0 +1,21 @@
+{
+  "name": "spin-build",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Thorsten Hans <thorsten.hans@gmail.com> (https://thorsten-hans.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.4",
+    "@types/node": "^20.9.0",
+    "@types/q": "^1.5.8",
+    "sync-request": "^6.1.0"
+  }
+}
