@@ -8,16 +8,17 @@ import * as toolLib from 'azure-pipelines-tool-lib/tool';
 
 const download = require('download');
 const { v4: uuidv4 } = require('uuid');
+const semver = require('semver');
 
-const spinToolName = "spin"; 
-const spinLatestReleaseUrl = "https://api.github.com/repos/fermyon/spin/releases/latest";
-const spinLatestStableVersion = "v2.0.0";
+const spinToolName = "spin";
+const spinLatestReleaseUrl = "https://api.github.com/repos/spinframework/spin/releases/latest";
+const spinLatestStableVersion = "v3.4.1";
 
 export async function downloadSpin(version: string): Promise<string> {
     let cachedSpinToolPath = toolLib.findLocalTool(spinToolName, version);
     if (!cachedSpinToolPath) {
-        const source = getDownloadUrl(version);    
-        var downloadPath = await downloadFile(source);   
+        const source = getDownloadUrl(version);
+        var downloadPath = await downloadFile(source);
         tl.debug('Extracting the downloaded Fermyon Spin tool archive..');
         const unzippedSpinToolPath = await extractArchive(downloadPath);
 
@@ -34,7 +35,7 @@ export async function downloadSpin(version: string): Promise<string> {
         console.log(tl.loc("VersionAlreadyInstalled", version, cachedSpinToolPath));
     }
     const spinPath = path.join(cachedSpinToolPath, spinToolName + getExecutableExtension());
-    fs.chmodSync(spinPath, '755');   
+    fs.chmodSync(spinPath, '755');
     tl.debug(`File permissions set on ${spinPath} to 755`);
     return spinPath;
 }
@@ -44,6 +45,11 @@ export function addFolderToPath(folder: string) {
     if (!process.env['PATH']!.startsWith(path.dirname(folder))) {
         tl.prependPath(path.dirname(folder));
     }
+}
+
+export async function canRunSpinAka(spinVersion: string): Promise<boolean> {
+    const version = spinVersion.startsWith('v') ? spinVersion.slice(1) : spinVersion;
+    return semver.gte(version, '3.1.0');
 }
 
 export async function getSpecifiedSpinVersion(): Promise<string> {
@@ -62,7 +68,7 @@ export async function getSpecifiedSpinVersion(): Promise<string> {
 
 async function getLatestVersion(): Promise<string> {
     let latestVersion = spinLatestStableVersion;
-    
+
     try {
         const f = await downloadFile(spinLatestReleaseUrl)
         const response = JSON.parse(fs.readFileSync(f, 'utf8').toString().trim());
@@ -76,7 +82,7 @@ async function getLatestVersion(): Promise<string> {
 }
 
 function getDownloadUrl(version: string): string {
-    let downloadUrlFormat = 'https://github.com/fermyon/spin/releases/download/%s/spin-%s-%s%s';
+    let downloadUrlFormat = 'https://github.com/spinframework/spin/releases/download/%s/spin-%s-%s%s';
     switch (os.type()) {
         case 'Linux':
             return util.format(downloadUrlFormat, version, version, 'linux-amd64', '.tar.gz');
@@ -88,11 +94,11 @@ function getDownloadUrl(version: string): string {
     }
 }
 
-async function downloadFile(source: string): Promise<string>{
+async function downloadFile(source: string): Promise<string> {
     const targetFolder = getTempFolder();
     const targetFile = getRandomFileName();
-    try{
-        await download(source, targetFolder, {filename: targetFile});
+    try {
+        await download(source, targetFolder, { filename: targetFile });
         return path.join(targetFolder, targetFile);
     }
     catch (ex) {
@@ -110,7 +116,7 @@ function getTempFolder() {
 }
 
 function getRandomFileName(): string {
-    return uuidv4();    
+    return uuidv4();
 }
 
 function getExecutableExtension(): string {

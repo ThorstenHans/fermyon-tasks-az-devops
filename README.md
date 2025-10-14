@@ -11,10 +11,10 @@ The *Spin Tool Installer* allows you to install any version of the `spin` CLI on
 ![Spin Tool Installer Task - Version](assets/docs/spin-tool-installer-version.png)
 
 ```yaml
-- task: thorstenhans.fermyon.spin-tool.spin-tool@0
+- task: thorstenhans.fermyon.spin-tool.spin-tool@1
   displayName: 'Install Fermyon Spin'
   inputs:
-    version: v2.0.0
+    version: v3.4.1
 ```
 
 ## Spin Build
@@ -22,7 +22,7 @@ The *Spin Tool Installer* allows you to install any version of the `spin` CLI on
 The *Spin Build* task invokes `spin build` to compile your Spin application.
 
 ```yaml
-- task: thorstenhans.fermyon.spin-build.spin-build@0
+- task: thorstenhans.fermyon.spin-build.spin-build@1
   displayName: 'Spin Build'
 ```
 
@@ -34,7 +34,7 @@ The *Spin Command* tool allows users to invoke any command provided by `spin` CL
 
 ```yaml
 steps:
-- task: thorstenhans.fermyon.spin-command.spin-command@0
+- task: thorstenhans.fermyon.spin-command.spin-command@1
   displayName: 'List all spin apps in Fermyon Cloud'
   inputs:
     command: cloud
@@ -51,6 +51,15 @@ Use the *Spin Version* task retrieve the version of the `spin` tool installed on
 
 Tasks can reference the output variable using the `$(<reference-name>.version)` syntax.
 
+## Fermyon Wasm Functions
+
+### Authenticate against Fermyon Wasm Functions
+
+You can authenticate against Fermyon Wasm Functions using a Personal Access Token (PAT) and the **Login To Fermyon Wasm Functions** task. 
+
+```yaml
+```
+
 ## Deploy to Fermyon Cloud
 
 The *Deploy to Fermyon Cloud* task allows you to deploy your Spin application to Fermyon Cloud. The task requires a valid Fermyon Cloud account and a valid Spin application. To authenticate with Fermyon Cloud, you must generate a Personal Access Token (PAT) in your [Fermyon Cloud account](https://cloud.fermyon.com). Treat the PAT as sensitive information and store it as masked (sensitive) pipeline variable. (variable groups in Azure DevOps support this too).
@@ -59,7 +68,7 @@ The *Deploy to Fermyon Cloud* task allows you to deploy your Spin application to
 
 ```yaml
 steps:
-- task: thorstenhans.fermyon.deploy-to-fermyon-cloud.deploy-to-fermyon-cloud@0
+- task: thorstenhans.fermyon.deploy-to-fermyon-cloud.deploy-to-fermyon-cloud@1
   displayName: 'Deploy to Fermyon Cloud'
   inputs:
     token: '$(fermyon.cloud.token)'

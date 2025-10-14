@@ -1,6 +1,6 @@
-# Spin & Fermyon Cloud tasks for Azure DevOps
+# Azure DevOps tasks for Spin, Fermyon Wasm Functions & Fermyon Cloud
 
-This is a collection of tools for Azure DevOps Pipelines to work with Fermyon Spin & Fermyon Cloud. Tools have been build and tested for Linux, macOS and Windows agents. Currently, `spin` is downloaded for the `amd64` architecture only.
+This is a collection of tools for Azure DevOps Pipelines to work with Spin, Fermyon Wasm Functions & Fermyon Cloud. Tools have been build and tested for Linux, macOS and Windows agents. Currently, `spin` is downloaded for the `amd64` architecture only.
 
 ![Spin & Fermyon Cloud Tasks](assets/docs/fermyon-tasks.png)
 
@@ -11,10 +11,10 @@ The *Spin Tool Installer* allows you to install any version of the `spin` CLI on
 ![Spin Tool Installer Task - Version](assets/docs/spin-tool-installer-version.png)
 
 ```yaml
-- task: thorstenhans.fermyon.spin-tool.spin-tool@0
+- task: thorstenhans.fermyon.spin-tool.spin-tool@1
   displayName: 'Install Fermyon Spin'
   inputs:
-    version: v2.0.0
+    version: v3.1.4
 ```
 
 ## Spin Build
@@ -22,7 +22,7 @@ The *Spin Tool Installer* allows you to install any version of the `spin` CLI on
 The *Spin Build* task invokes `spin build` to compile your Spin application.
 
 ```yaml
-- task: thorstenhans.fermyon.spin-build.spin-build@0
+- task: thorstenhans.fermyon.spin-build.spin-build@1
   displayName: 'Spin Build'
 ```
 
@@ -34,7 +34,7 @@ The *Spin Command* tool allows users to invoke any command provided by `spin` CL
 
 ```yaml
 steps:
-- task: thorstenhans.fermyon.spin-command.spin-command@0
+- task: thorstenhans.fermyon.spin-command.spin-command@1
   displayName: 'List all spin apps in Fermyon Cloud'
   inputs:
     command: cloud
@@ -51,6 +51,31 @@ Use the *Spin Version* task retrieve the version of the `spin` tool installed on
 
 Tasks can reference the output variable using the `$(<reference-name>.version)` syntax.
 
+## Fermyon Wasm Functions
+
+### Authenticate Against Fermyon Wasm Functions
+
+```yaml
+#Your build pipeline references an undefined variable named ‘fwf.pat’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+steps:
+- task: thorstenhans.fermyon.spin-aka-login.spin-aka-login@1
+  displayName: 'Login to Fermyon Wasm Functions'
+  inputs:
+    token: '$(your.fermyonwasmfunctions.pat)'
+```
+
+### Deploy to Fermyon Wasm Functions
+
+```yaml
+steps:
+- task: thorstenhans.fermyon.spin-aka-deploy.deploy-to-fermyon-wasm-functions@1
+  displayName: 'Deploy to Fermyon Wasm Functions'
+  inputs:
+    createName: 'azuredevops-tasks'
+    variables: 'foo=bar'
+```
+
 ## Deploy to Fermyon Cloud
 
 The *Deploy to Fermyon Cloud* task allows you to deploy your Spin application to Fermyon Cloud. The task requires a valid Fermyon Cloud account and a valid Spin application. To authenticate with Fermyon Cloud, you must generate a Personal Access Token (PAT) in your [Fermyon Cloud account](https://cloud.fermyon.com). Treat the PAT as sensitive information and store it as masked (sensitive) pipeline variable. (variable groups in Azure DevOps support this too).
@@ -59,7 +84,7 @@ The *Deploy to Fermyon Cloud* task allows you to deploy your Spin application to
 
 ```yaml
 steps:
-- task: thorstenhans.fermyon.deploy-to-fermyon-cloud.deploy-to-fermyon-cloud@0
+- task: thorstenhans.fermyon.deploy-to-fermyon-cloud.deploy-to-fermyon-cloud@1
   displayName: 'Deploy to Fermyon Cloud'
   inputs:
     token: '$(fermyon.cloud.token)'

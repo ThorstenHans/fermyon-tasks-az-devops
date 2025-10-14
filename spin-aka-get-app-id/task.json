@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "cd734da3-86c3-4ba9-90e8-9caa5043fa65",
+  "name": "get-fermyon-wasm-functions-app-id",
+  "friendlyName": "Get Fermyon Wasm Functions App ID",
+  "description": "Use this task to retrieve an App ID from Fermyon Wasm Functions",
+  "helpMarkDown": "For more details check out the [Fermyon Wasm Functions documentation](https://developer.fermyon.com/wasm-functions/).",
+  "category": "Deploy",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 5
+  },
+  "instanceNameFormat": "Get Fermyon Wasm Functions App ID",
+  "inputs": [
+    {
+      "name": "accountId",
+      "label": "Account ID",
+      "groupName": "FWF Account",
+      "required": false,
+      "type": "string"
+    },
+    {
+      "name": "accountName",
+      "label": "Account Name",
+      "groupName": "FWF Account",
+      "required": false,
+      "type": "string"
+    },
+    {
+      "name": "appName",
+      "label": "Application Name",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  },
+  "messages": {
+    "VerifyingSpinInstallation": "Verifying installation of Fermyon Spin",
+    "RetrievingApplicationId": "Retrieving application ID from Fermyon Wasm Functions"
+  }
+}

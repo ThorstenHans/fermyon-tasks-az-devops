@@ -1,0 +1,22 @@
+{
+  "name": "spin-aka-deploy",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "Thorsten Hans <thorsten.hans@gmail.com> (https://thorsten-hans.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^5.2.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.7.2",
+    "@types/q": "^1.5.8",
+    "sync-request": "^6.1.0"
+  }
+}

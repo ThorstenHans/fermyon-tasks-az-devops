@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as tl from 'azure-pipelines-task-lib/task';
 
-import { getSpecifiedSpinVersion, downloadSpin, addFolderToPath } from './util';
+import { getSpecifiedSpinVersion, downloadSpin, addFolderToPath, canRunSpinAka } from './util';
 
 tl.setResourcePath(path.join(__dirname, 'task.json'));
 
@@ -52,7 +52,12 @@ async function installSpinTemplates(spinPath: string, repo: string) {
 
 async function installSpinPlugin(spinPath: string, name: string) {
     console.log(tl.loc("InstallingSpinPlugins", name));
-    const args = ["plugins", "install", name, "--yes"];
+    let args = [];
+    if (name.startsWith("https://")) {
+        args = ["plugins", "install", "--url", name, "--yes"];
+    } else {
+        args = ["plugins", "install", name, "--yes"];
+    }
 
     try {
         var spin = tl.tool(spinPath);
@@ -72,6 +77,10 @@ async function installPlugins(binary: string) {
     try {
         tl.debug("Starting plugin installation");
         await installSpinPlugin(binary, "cloud");
+        const spinVersion = await getSpecifiedSpinVersion();
+        if (await canRunSpinAka(spinVersion)) {
+            await installSpinPlugin(binary, "aka");
+        }
         await installSpinPlugin(binary, "js2wasm");
         await installSpinPlugin(binary, "py2wasm");
     } catch (err: any) {
@@ -82,9 +91,9 @@ async function installPlugins(binary: string) {
 async function installTemplates(binary: string) {
     try {
         tl.debug("Starting template installation");
-        await installSpinTemplates(binary, "https://github.com/fermyon/spin");
-        await installSpinTemplates(binary, "https://github.com/fermyon/spin-python-sdk");
-        await installSpinTemplates(binary, "https://github.com/fermyon/spin-js-sdk");
+        await installSpinTemplates(binary, "https://github.com/spinframework/spin");
+        await installSpinTemplates(binary, "https://github.com/spinframework/spin-python-sdk");
+        await installSpinTemplates(binary, "https://github.com/spinframework/spin-js-sdk");
     } catch (err: any) {
         throw err;
     }

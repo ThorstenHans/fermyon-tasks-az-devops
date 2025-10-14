@@ -40,7 +40,7 @@ async function version(): Promise<string> {
             throw new Error(`'spin --version' failed. (exit code: ${exitCode})`);
         }
         console.log(`Received output: ${output}`);
-        tl.setVariable('version', output.trim());
+        tl.setVariable('spinVersion', output.trim(), false, true);
         return output.trim();
     } catch (err: any) {
         throw err;

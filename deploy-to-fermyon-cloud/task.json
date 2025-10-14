@@ -8,8 +8,8 @@
   "category": "Deploy",
   "author": "Thorsten Hans",
   "version": {
-    "Major": 0,
-    "Minor": 1,
+    "Major": 1,
+    "Minor": 0,
     "Patch": 0
   },
   "instanceNameFormat": "Deploy to Fermyon Cloud",
@@ -27,8 +27,9 @@
     }
   ],
   "execution": {
-    "Node": {
-      "target": "index.js"
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
     }
   },
   "messages": {

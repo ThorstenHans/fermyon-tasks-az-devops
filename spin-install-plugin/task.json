@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "7ce1a22a-64f8-4f3c-9d96-06de2294bd62",
+  "name": "spin-install-plugin",
+  "friendlyName": "Spin Plugin Installer",
+  "description": "Use this task to install plugins for Spin CLI",
+  "helpMarkDown": "For more information consult the [Fermyon Developer Home](https://developer.fermyon.com/)",
+  "category": "Utility",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Spin Plugin Installer",
+  "inputs": [
+    {
+      "name": "pluginSource",
+      "type": "string",
+      "label": "Name or URL of the Plugin",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "pluginVersion",
+      "type": "string",
+      "label": "Plugin version",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "Specific version of a plugin to be install from the centralized plugins repository"
+    }
+  ],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  },
+  "messages": {
+    "VerifyingSpinInstallation": "Verifying installation of Fermyon Spin",
+    "InstallingSpinPlugins": "Installing Fermyon Spin plugin: %s"
+  }
+}

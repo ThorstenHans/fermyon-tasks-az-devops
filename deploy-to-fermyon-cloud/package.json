@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "npx tsc"
   },
   "keywords": [],
   "author": "Thorsten Hans <thorsten.hans@gmail.com> (https://thorsten-hans.com/)",
   "license": "ISC",
   "dependencies": {
-    "azure-pipelines-task-lib": "^4.7.0"
+    "azure-pipelines-task-lib": "^4.7.0",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.4",
