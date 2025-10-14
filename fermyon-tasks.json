@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "fermyon",
   "name": "Azure DevOps Tasks for Spin",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "publisher": "thorstenhans",
   "public": true,
   "targets": [
