@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "c78ca065-2590-4afc-bb71-d7d4bcc197fe",
+  "name": "spin-command",
+  "friendlyName": "Spin Command",
+  "description": "Execute any command provided by the 'spin' CLI or its plugins",
+  "helpMarkDown": "For more information consult the [Fermyon Developer Home](https://developer.fermyon.com/)",
+  "category": "Build",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "instanceNameFormat": "Run a Spin Command",
+  "inputs": [
+    {
+      "name": "command",
+      "label": "Command",
+      "type": "string",
+      "required": true,
+      "defaultValue": "--version",
+      "helpMarkDown": "Invoke any command offered by the 'spin' CLI or its plugins"
+    },
+    {
+      "name": "arguments",
+      "type": "multiLine",
+      "label": "Arguments",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "Arguments to pass to the command"
+    }
+  ],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  },
+  "messages": {
+    "VerifyingSpinInstallation": "Verifying installation of Spin",
+    "RunningSpinCommand": "Invoking custom command with 'spin' (%s)"
+  }
+}

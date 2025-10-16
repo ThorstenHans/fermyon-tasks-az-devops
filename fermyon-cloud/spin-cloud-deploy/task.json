@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "483a9051-fe3d-45f0-9ac4-f726eb0160b5",
+  "name": "spin-cloud-deploy",
+  "friendlyName": "Deploy to Fermyon Cloud",
+  "description": "Use this task to deploy your Spin application to Fermyon Cloud",
+  "helpMarkDown": "For more details check out the [Fermyon Cloud documentation](https://developer.fermyon.com/cloud/).",
+  "category": "Deploy",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "instanceNameFormat": "Deploy to Fermyon Cloud",
+  "inputs": [],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  },
+  "messages": {
+    "VerifyingSpinInstallation": "Verifying installation of Spin CLI",
+    "DeployingToFermyonCloud": "Deploying to Fermyon Cloud"
+  }
+}

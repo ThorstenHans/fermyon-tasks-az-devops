@@ -1,44 +1,27 @@
-.PHONY: build build_spin_tool_task build_spin_build_task build_deploy_to_fermyon_cloud_task build_spin_version_task build_spin_command_task build_spin_install_plugin_task build_spin_aka_deploy_task build_spin_aka_login_task build_spin_aka_get_app_id_task
+.PHONY: build build_spin_tasks build_fermyon_cloud_tasks build_fermyon_wasm_functions_tasks
 
-build: build_spin_tool_task build_spin_build_task build_deploy_to_fermyon_cloud_task build_spin_version_task build_spin_command_task build_spin_install_plugin_task build_spin_aka_deploy_task build_spin_aka_login_task build_spin_aka_get_app_id_task
-	@echo "Building vsix package"
-	@tfx extension create --manifest-globs fermyon-tasks.json --output-path dist
+build: build_spin_tasks build_fermyon_cloud_tasks build_fermyon_wasm_functions_tasks
+	@echo "Created all VSIX packages"
 
-build_spin_tool_task:
-	@echo "Building Spin tool task..."
-	@cd spin-tool && npm install && npm run build && npm prune --production
+build_spin_tasks:
+	@echo "Building Spin tasks ..."
+	@cd spin && cd spin-tool && npm install && npm run build && npm prune --production && \
+	cd .. && cd spin-build && npm install && npm run build && npm prune --production && \
+	cd .. && cd spin-command && npm install && npm run build && npm prune --production && \
+	cd .. && cd spin-install-plugin && npm install && npm run build && npm prune --production && \
+	cd .. && cd spin-version && npm install && npm run build && npm prune --production && cd .. && cd ..
+	@cd spin && tfx extension create --manifest-globs spin-tasks.json --output-path ../dist
 
-build_spin_build_task:
-	@echo "Building Spin build task..."
-	@cd spin-build && npm install && npm run build && npm prune --production
+build_fermyon_cloud_tasks:
+	@echo "Building Fermyon Cloud tasks ..."
+	@cd fermyon-cloud && cd spin-cloud-deploy && npm install && npm run build && npm prune --production && cd .. && cd ..
+	@cd fermyon-cloud && tfx extension create --manifest-globs fermyon-cloud-tasks.json --output-path ../dist
 
-build_spin_version_task:
-	@echo "Building Spin version task..."
-	@cd spin-version && npm install && npm run build && npm prune --production
-
-build_spin_command_task:
-	@echo "Building Spin command task..."
-	@cd spin-command && npm install && npm run build && npm prune --production
-
-build_spin_install_plugin_task:
-	@echo "Building Spin Install Plugin task..."
-	@cd spin-install-plugin && npm install && npm run build && npm prune --production
-	
-build_deploy_to_fermyon_cloud_task:
-	@echo "Building Deploy to Fermyon Cloud task..."
-	@cd deploy-to-fermyon-cloud && npm install && npm run build && npm prune --production
-
-build_spin_aka_login_task:
-	@echo "Building Login to Fermyon Wasm Functions task..."
-	@cd spin-aka-login && npm install && npm run build && npm prune --production
-
-build_spin_aka_deploy_task:
-	@echo "Building Deploy to Fermyon Wasm Functions task..."
-	@cd spin-aka-deploy && npm install && npm run build && npm prune --production
-
-build_spin_aka_get_app_id_task:
-	@echo "Building Get App Id from Fermyon Wasm Functions task..."
-	@cd spin-aka-get-app-id && npm install && npm run build && npm prune --production
-
-
-
+build_fermyon_wasm_functions_tasks:
+	@echo "Building Fermyon Wasm Functions tasks ..."
+	@cd fermyon-wasm-functions && \
+	cd spin-aka-login && npm install && npm run build && npm prune --production && cd .. && \
+	cd spin-aka-get-app-id && npm install && npm run build && npm prune --production && cd .. && \
+	cd spin-aka-deploy && npm install && npm run build && npm prune --production && cd .. && cd ..
+	@cd fermyon-wasm-functions && tfx extension create --manifest-globs fermyon-wasm-functions-tasks.json --output-path ../dist
+ 

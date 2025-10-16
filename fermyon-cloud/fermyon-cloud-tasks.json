@@ -1,0 +1,82 @@
+{
+  "manifestVersion": 1,
+  "id": "fermyon-cloud-tasks",
+  "name": "Fermyon Cloud",
+  "version": "0.4.11",
+  "publisher": "thorstenhans",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tasks for interacting with Fermyon Cloud",
+  "content": {
+    "details": {
+      "path": "DETAILS.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "categories": ["Azure Pipelines"],
+  "icons": {
+    "default": "assets/images/fermyon-icon.png"
+  },
+  "files": [
+    {
+      "path": "spin-cloud-login"
+    },
+    {
+      "path": "spin-cloud-deploy"
+    },
+    {
+      "path": "assets/docs/fermyon-tasks.png",
+      "addressable": true
+    },
+    {
+      "path": "assets/docs/deploy-to-fermyon-cloud.png",
+      "addressable": true
+    }
+  ],
+  "branding": {
+    "color": "rgb(14, 9, 45)",
+    "theme": "dark"
+  },
+  "contributions": [
+    {
+      "id": "spin-cloud-login",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "spin-cloud-login"
+      }
+    },
+    {
+      "id": "spin-cloud-deploy",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "spin-cloud-deploy"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "assets/docs/deploy-to-fermyon-cloud.png"
+    },
+    {
+      "path": "assets/docs/fermyon-tasks.png"
+    }
+  ],
+  "links": {
+    "support": {
+      "uri": "https://github.com/ThorstenHans/fermyon-tasks-az-devops/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/ThorstenHans/fermyon-tasks-az-devops"
+  },
+  "tags": ["spin", "fermyon", "cloud", "webassembly", "wasm", "build"]
+}

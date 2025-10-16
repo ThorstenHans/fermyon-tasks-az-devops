@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "433a54d6-3de1-4a63-986a-e9cd46174238",
+  "name": "spin-build",
+  "friendlyName": "Spin Build",
+  "description": "Invokes 'spin build' to compile your Spin application",
+  "helpMarkDown": "For more information consult the [Fermyon Developer Home](https://developer.fermyon.com/)",
+  "category": "Build",
+  "author": "Thorsten Hans",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "instanceNameFormat": "Spin Build",
+  "inputs": [],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  },
+  "messages": {
+    "VerifyingSpinInstallation": "Verifying installation of Spin",
+    "RunningSpinBuild": "Invoking 'spin build'"
+  }
+}

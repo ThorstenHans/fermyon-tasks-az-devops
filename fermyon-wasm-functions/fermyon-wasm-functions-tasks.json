@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "id": "fermyon-wasm-functions-tasks",
+  "name": "Fermyon Wasm Functions",
+  "version": "0.4.12",
+  "publisher": "thorstenhans",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tasks for interacting with Fermyon Wasm Functions",
+  "content": {
+    "details": {
+      "path": "DETAILS.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "categories": ["Azure Pipelines"],
+  "icons": {
+    "default": "assets/images/fermyon-wasm-functions-logo.png"
+  },
+  "files": [
+    {
+      "path": "spin-aka-login"
+    },
+    {
+      "path": "spin-aka-deploy"
+    },
+    {
+      "path": "spin-aka-get-app-id"
+    },
+    {
+      "path": "assets/docs/fermyon-tasks.png",
+      "addressable": true
+    }
+  ],
+  "branding": {
+    "color": "rgb(14, 9, 45)",
+    "theme": "dark"
+  },
+  "contributions": [
+    {
+      "id": "spin-aka-login",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "spin-aka-login"
+      }
+    },
+    {
+      "id": "spin-aka-deploy",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "spin-aka-deploy"
+      }
+    },
+    {
+      "id": "spin-aka-get-app-id",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "spin-aka-get-app-id"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "assets/docs/fermyon-tasks.png"
+    }
+  ],
+  "links": {
+    "support": {
+      "uri": "https://github.com/ThorstenHans/fermyon-tasks-az-devops/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/ThorstenHans/fermyon-tasks-az-devops"
+  },
+  "tags": [
+    "spin",
+    "fermyon",
+    "fermyon-wasm-functions",
+    "webassembly",
+    "wasm",
+    "build"
+  ]
+}
